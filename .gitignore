@@ -1,0 +1,15 @@
+# Build artifacts
+*.exe
+*.gch
+*.o
+*.obj
+
+# Local saves and development copies
+paulzrm
+temp/
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
