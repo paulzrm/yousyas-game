@@ -46,8 +46,7 @@ void shit(){
 			if(c==7 or c==8 or c==9)grid.c[i][j]=0;
 		}
 	}
-	for(int i=0;i<enemies.size();++i){
-		Enemy enemy=enemies[i];
+	for(const Enemy& enemy:enemies){
 		if(enemy.alive==0)continue;
 		drawEnemy(enemy);
 	}
@@ -92,10 +91,9 @@ void print(Grid g,Player p) {
 }
 bool enoughCoin(Grid g){
 	int cnt=0;
-	for(int i=0;i<512;++i){
-		int x=rand()%g.n+1,y=rand()%g.m+1;
-		if(g.c[x][y]==6)++cnt;
-	}
+	for(int i=1;i<=g.n;++i)
+		for(int j=1;j<=g.m;++j)
+			if(g.c[i][j]==6)++cnt;
 	return cnt>=maxCoin;
 }
 #endif

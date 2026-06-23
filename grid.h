@@ -38,7 +38,10 @@ struct Grid{
 	}
 	void genCoin(){
 		int cnt=16;
-		if(inTut)cnt=6;
+		// The first tutorial asks for 160 coins. Six initial coins made the
+		// player wait for random respawns, so provide enough collectibles
+		// to finish the movement lesson through active exploration.
+		if(inTut)cnt=20;
 		for(int t=1;t<=cnt;++t){
 			int tx=rand()%n+1,ty=rand()%m+1;
 			if(abs(tx-player.x)+abs(ty-player.y)>5 and c[tx][ty]==0)c[tx][ty]=6;

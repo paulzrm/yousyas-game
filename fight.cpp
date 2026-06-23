@@ -18,9 +18,8 @@ int check(Enemy enemy,Player player){
 }
 int checkCrash(){
 	if(standardClock-lastUpdate>updateTime)updateEnemyList(),lastUpdate=standardClock;
-	if(standardClock-lastGenerate>newEnemyTime and enemies.size()<enemyLimit)newEnemy(15),lastGenerate=standardClock;
-	for(int i=0;i<enemies.size();++i){
-		Enemy&enemy=enemies[i];
+	if(standardClock-lastGenerate>newEnemyTime and enemies.size()<static_cast<size_t>(enemyLimit))newEnemy(15),lastGenerate=standardClock;
+	for(Enemy& enemy:enemies){
 		if(enemy.alive==0)continue;
 		int t=check(enemy,player);
 		if(t==0)continue;

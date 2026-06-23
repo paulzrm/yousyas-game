@@ -27,14 +27,15 @@ void newEnemy(int eyesight=15){
 bool canSee(Enemy a,Player b){
 	if(specialRule)a.sight=0;
 	if(dist(a,b)>a.sight) return 0;
-//	return 1;
 	int vx=b.x-a.x,vy=b.y-a.y;
 	int ex=dx[a.dir],ey=dy[a.dir];
-	int dot=(vx*ex+vy*ey);dot*=dot;
+	int dot=(vx*ex+vy*ey);
+	// 120-degree field of view: the target must be in front of the enemy
+	// and at most 60 degrees away from its facing direction.
+	if(dot<=0)return 0;
 	ld norm_v=vx*vx+vy*vy;
 	ld norm_e=ex*ex+ey*ey;
-	if(dot*eyeSightAngle<=norm_v*norm_e) return 1;
-	return 0;
+	return (ld)dot*dot*eyeSightAngle>=norm_v*norm_e;
 }
 int getDir(Enemy a,Player b){
 	if(!canSee(a,b))return -1;
@@ -105,8 +106,7 @@ void move(Enemy&enemy){
 	}
 }
 void updateEnemy(){
-	for(int i=0;i<enemies.size();++i){
-		Enemy&enemy=enemies[i];
+	for(Enemy& enemy:enemies){
 		if(enemy.alive==0)continue;
 		if(standardClock-enemy.lastmove<enemySpeed)continue;
 //		eraseEnemy(enemy); 
@@ -116,11 +116,11 @@ void updateEnemy(){
 }
 void updateEnemyList(){
 	vector<Enemy>newList;newList.clear();
-	for(int i=0;i<enemies.size();++i)if(enemies[i].alive)newList.push_back(enemies[i]);
+	for(const Enemy& enemy:enemies)if(enemy.alive)newList.push_back(enemy);
 	enemies=newList;
 }
 void clearEnemies(){
-	for(int i=0;i<enemies.size();++i)enemies[i].alive=0,eraseEnemy(enemies[i]);
+	for(Enemy& enemy:enemies)enemy.alive=0,eraseEnemy(enemy);
 	updateEnemyList();
 } 
 #endif 

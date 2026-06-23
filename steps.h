@@ -2,8 +2,8 @@
 #define __steps_h_
 #include<bits/stdc++.h>
 using namespace std;
-int slowPrint(string s);
-int slowPrint(string s,string COLOR);
+void slowPrint(string s);
+void slowPrint(string s,string COLOR);
 void step0();
 void step1();
 void prePlot();

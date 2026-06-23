@@ -1,15 +1,15 @@
 #ifndef __steps_cpp_
 #define __steps_cpp_
 #include "includes.h"
-int slowPrint(string s){
-	for(int i=0;i<s.size();++i){
+void slowPrint(string s){
+	for(size_t i=0;i<s.size();++i){
 		cout<<s[i];
 		Sleep(20);
 	}
 }
-int slowPrint(string s,string COLOR){
+void slowPrint(string s,string COLOR){
 	cout<<COLOR;
-	for(int i=0;i<s.size();++i){
+	for(size_t i=0;i<s.size();++i){
 		cout<<s[i];
 		Sleep(50);
 	}
@@ -341,6 +341,7 @@ void prePlot(){
 void step2(){
 	system("cls");
 	if(Stage>=7)return;
+	inTut=0;
 	maxCoin=6;
 	if(!skipPlot){
 		skipPlot=1;
@@ -361,7 +362,11 @@ void step2(){
 	grid.name="「赤烬之地」";
 	grid.generate();
 	grid.add(player);
-	for(int i=0;i<128;++i)newEnemy(15);
+	// Keep the continent dangerous without filling the entire map with
+	// enemies before the player can read the battlefield.
+	enemyLimit=48;
+	enemySpeed=4;
+	for(int i=0;i<48;++i)newEnemy(10);
 	print(grid,player);
 	while(1){
 		if(die)return; 
