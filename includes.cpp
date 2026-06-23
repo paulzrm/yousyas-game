@@ -1,3 +1,5 @@
+#include "conio.h"
+#include "cursor.cpp"
 #include "grid.cpp"
 #include "player.cpp"
 #include "enemy.cpp"

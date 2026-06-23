@@ -1,7 +1,6 @@
 #include "includes.cpp"
 using namespace std;
-
-void configureConsole(){
+int main(){
 	SetConsoleCP(CP_UTF8);
 	SetConsoleOutputCP(CP_UTF8);
 	HANDLE output=GetStdHandle(STD_OUTPUT_HANDLE);
@@ -9,10 +8,9 @@ void configureConsole(){
 	if(output!=INVALID_HANDLE_VALUE && GetConsoleMode(output,&mode)){
 		SetConsoleMode(output,mode|ENABLE_VIRTUAL_TERMINAL_PROCESSING);
 	}
-}
-
-int main(){
-	configureConsole();
+	yousyaColor=BLUE;
+	enemyColor=RED;
+	hideCursor();
 	srand(time(NULL));
 	player.init();
 	while(1){
@@ -24,51 +22,55 @@ int main(){
 		bgn:;
 		static const string clear_screen="\033[H";
 		cout<<clear_screen;
-		step0();
+		step0();GetAsyncKeyState(VK_E);
 		slowPrint("\n      C 继续游戏\n");
 		slowPrint("\n\n      L 读取存档\n");
 		slowPrint("\n\n      N 新游戏\n");
 		slowPrint("\n\n      V 查看已解锁结局\n");
 		slowPrint("\n\n      E 退出游戏\n");
 		while(1){
-			if(GetAsyncKeyState(VK_L)){
+			char c=getch();
+			if(c=='l'){
 				loadFile();
 				Play();
-			}
-			if(GetAsyncKeyState(VK_C)){
+			}if(die)break;
+			if(c=='c'){
 				readFile();
 				Play();
-			}
-			if(GetAsyncKeyState(VK_N)){
+			}if(die)break;
+			if(c=='n'){
 				newFile();
 				Play();
-			}
-			if(GetAsyncKeyState(VK_V)){
+			}if(die)break;
+			if(c=='v'){
 				loadFile();
 				viewEndings();
 				system("cls");
 				goto bgn;
-			}
-			if(GetAsyncKeyState(VK_E)){
+			}if(die)break;
+			if(c=='e'){
 //				saveFile();
 				exit(0);
-			}
+			}if(die)break;
 			if(die)break;
 		}
 	}
+//	enemyColor=RED;
+//	yousyaColor=BLUE;
 //	grid.init();
 //	player.init();
-//	grid.generate();
-//	player.setPos(64,64);
+//	grid.generateMaze();
+//	player.setPos(40,40);
 //	grid.add(player);
-//	for(int i=0;i<128;++i)newEnemy(15);
+//	for(int i=0;i<64;++i)newEnemy(5);
+////	exit(0);
 //	while(1){
 //		update();
-//		if(checkCrash())End(1);
+//		if(checkCrash())End(2);
 //		updateEnemy();
-//		if(checkCrash())End(1);
+//		if(checkCrash())End(2);
 //		print(grid,player);
 //		++standardClock;
-//		Sleep(100);
+//		Sleep(200);
 //	}
 }

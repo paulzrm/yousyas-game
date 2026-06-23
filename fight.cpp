@@ -1,5 +1,5 @@
 #ifndef __fight_cpp_
-#define __fight_cpp 
+#define __fight_cpp
 #include "includes.h"
 int check(Enemy enemy,Player player){
 	pair<int,int>e1,e2,p1,p2;
@@ -12,14 +12,19 @@ int check(Enemy enemy,Player player){
 		if(p2==e2 or p1==e1 or p1==e2)return 2;
 		return 0;
 	}
+	if(!player.weapon){
+		if(p1==e1 or p1==e2)return 2;
+		return 0;
+	}
 	if(p2==e1 or p2==e2)return 1;//player win
 	if(p1==e1 or p1==e2)return 2;//enemy win
 	return 0;
 }
 int checkCrash(){
 	if(standardClock-lastUpdate>updateTime)updateEnemyList(),lastUpdate=standardClock;
-	if(standardClock-lastGenerate>newEnemyTime and enemies.size()<static_cast<size_t>(enemyLimit))newEnemy(15),lastGenerate=standardClock;
-	for(Enemy& enemy:enemies){
+	if(standardClock-lastGenerate>newEnemyTime and enemies.size()<enemyLimit)newEnemy(enemyEyesight),lastGenerate=standardClock;
+	for(int i=0;i<enemies.size();++i){
+		Enemy&enemy=enemies[i];
 		if(enemy.alive==0)continue;
 		int t=check(enemy,player);
 		if(t==0)continue;

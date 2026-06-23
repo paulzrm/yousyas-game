@@ -2,7 +2,8 @@
 #define __file_cpp_
 #include "includes.h"
 void newFile(){
-	slowPrint("请输入你的新存档名：");string s;cin>>s;
+	countKill=0;
+	slowPrint("����������´浵����");string s;cin>>s;
 	fileName=s;
 	ofstream ot;
 	ot.open(fileName.c_str());
@@ -18,7 +19,7 @@ void newFile(){
 	ot<<player.x<<' '<<player.y<<' '<<player.money<<' '<<player.dir<<'\n';
 	ot<<player.hp<<' '<<player.left<<' '<<player.leftx<<' '<<player.lefty<<'\n';
 	for(int i=0;i<8;++i)ot<<haveEnd[i]<<' ';
-	ot<<skipPlot;
+	ot<<skipPlot<<' '<<countKill<<' '<<ableV;
 	ot.close();
 }
 void saveFile(){
@@ -28,11 +29,11 @@ void saveFile(){
 	ot<<player.x<<' '<<player.y<<' '<<player.money<<' '<<player.dir<<'\n';
 	ot<<player.hp<<' '<<player.left<<' '<<player.leftx<<' '<<player.lefty<<'\n';
 	for(int i=0;i<8;++i)ot<<haveEnd[i]<<' ';
-	ot<<skipPlot;
+	ot<<skipPlot<<' '<<countKill<<' '<<ableV;
 	ot.close();
 }
 void loadFile(){
-	slowPrint("请输入你的存档名：");string s;cin>>s;
+	slowPrint("��������Ĵ浵����");string s;cin>>s;
 	fileName=s;
 	ifstream in;in.open(s.c_str());
 	in>>Stage;
@@ -47,7 +48,7 @@ void loadFile(){
 	in>>player.hp>>player.left>>player.leftx>>player.lefty;
 	player.hp=3;
 	for(int i=0;i<8;++i)in>>haveEnd[i];
-	in>>skipPlot;
+	in>>skipPlot>>countKill>>ableV;
 	in.close();
 }
 void readFile(){
@@ -64,7 +65,7 @@ void readFile(){
 	in>>player.hp>>player.left>>player.leftx>>player.lefty;
 	player.hp=3;
 	for(int i=0;i<8;++i)in>>haveEnd[i];
-	in>>skipPlot;
+	in>>skipPlot>>countKill>>ableV;
 	in.close();
 }
 #endif

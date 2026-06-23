@@ -9,6 +9,8 @@ if(MSVC)
   target_compile_options(yousyas_game PRIVATE /utf-8)
 else()
   target_compile_options(yousyas_game PRIVATE
+    -Wall
+    -Wextra
     -finput-charset=UTF-8
     -fexec-charset=UTF-8
   )

@@ -1,10 +1,10 @@
 #ifndef __data__
 #define __data__
-#define ld long double 
+#define ld long double
 #include<bits/stdc++.h>
 using namespace std;
-int dx[]={-1,0,1,0};//up,right,down,left
-int dy[]={0,1,0,-1};
+int dx[]={-1,0,1,0,0};//up,right,down,left
+int dy[]={0,1,0,-1,0};
 int enemyStopTime=5;
 int eyeSightAngle=4;
 int enemyStep=4;
@@ -26,4 +26,11 @@ string fileName;
 int maxCoin=10;
 int skipPlot;
 int die;
+int countKey;
+int touchPalace;
+int cantStop;clock_t lastMove;
+int attackWaitTime=2;
+int enemyEyesight=5;
+int generateLimit=-1;
+int nKey,ableV=0;
 #endif

@@ -13,3 +13,11 @@ temp/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Historical development bundles and raw recordings
+lemon.*/
+*.mkv
+*.zip
+enw
+fdsfs*
+new

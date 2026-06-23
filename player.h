@@ -6,11 +6,11 @@ struct Player{
 	int x,y,money,dir;
 	int hp;
 	bool left;
-	int leftx,lefty;
+	int leftx,lefty,weapon=1;
 	void init(){
 		leftx=0,lefty=0;
 		money=0;left=0;
-		dir=0;hp=3;
+		dir=0;hp=3;weapon=1;
 	}
 	void setPos(int xx,int yy){
 		x=xx;

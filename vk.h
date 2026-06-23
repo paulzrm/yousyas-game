@@ -1,4 +1,4 @@
-// 字母键
+// ��ĸ��
 #define VK_A 0x41
 #define VK_B 0x42
 #define VK_C 0x43
@@ -26,7 +26,7 @@
 #define VK_Y 0x59
 #define VK_Z 0x5A
 
-// 数字键 (主键盘)
+// ���ּ� (������)
 #define VK_0 0x30
 #define VK_1 0x31
 #define VK_2 0x32
@@ -38,7 +38,7 @@
 #define VK_8 0x38
 #define VK_9 0x39
 
-// 数字键盘 (小键盘)
+// ���ּ��� (С����)
 #define VK_NUMPAD0 0x60
 #define VK_NUMPAD1 0x61
 #define VK_NUMPAD2 0x62
@@ -50,7 +50,7 @@
 #define VK_NUMPAD8 0x68
 #define VK_NUMPAD9 0x69
 
-// 功能键
+// ���ܼ�
 #define VK_ESCAPE 0x1B
 #define VK_F1  0x70
 #define VK_F2  0x71
@@ -65,13 +65,13 @@
 #define VK_F11 0x7A
 #define VK_F12 0x7B
 
-// 方向键
+// �����
 #define VK_LEFT  0x25
 #define VK_UP    0x26
 #define VK_RIGHT 0x27
 #define VK_DOWN  0x28
 
-// 控制键
+// ���Ƽ�
 #define VK_BACKSPACE 0x08
 #define VK_TAB       0x09
 #define VK_ENTER     0x0D
@@ -81,7 +81,7 @@
 #define VK_CAPSLOCK  0x14
 #define VK_SPACE     0x20
 
-// 其他特殊键
+// ���������
 #define VK_INSERT    0x2D
 #define VK_DELETE    0x2E
 #define VK_HOME      0x24
